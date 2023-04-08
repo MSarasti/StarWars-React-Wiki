@@ -20,12 +20,14 @@ const Login = () => {
     <Grid >
         <Paper elevation={10} style={paperStyle}>
             <Grid container direction="column" justifyContent="center" alignItems="center">
-                <Avatar style={avatarStyle} sx={{ width: 55, height: 55 }}><LockTwoToneIcon sx={{ fontSize: 40 }}/></Avatar>
+                <Avatar style={avatarStyle} sx={{ width: 55, height: 55 }}>
+                  <LockTwoToneIcon sx={{ fontSize: 40 }}/>
+                  </Avatar>
                 <h2>Sign In</h2>
             </Grid>
             <Box component="form" sx={{'& .MuiTextField-root': { m: 1, width: '90%' },}} noValidate autoComplete="off">
-            <TextField id="userName" label="Username" variant="filled" placeholder='Enter your username' type='text' fullWidth/>
-            <TextField id="password" label="Password" variant="filled" placeholder='Enter your password' type='password' fullWidth/>
+            <TextField id="userName" label="Username" variant="filled" placeholder='Enter your username' type='text' fullWidth required/>
+            <TextField id="password" label="Password" variant="filled" placeholder='Enter your password' type='password' fullWidth required/>
             <ColorButton variant="contained" endIcon={<LoginTwoToneIcon/>} sx={{ width: '50%', marginTop: '60px' }}>Sign in</ColorButton>
             <Typography sx={{marginTop:'10px'}}>
                 Don't have a account?

@@ -21,8 +21,9 @@ function Ship() {
 		})
 	}
 
-	const handleDetails = () => {
-		
+	const handleDetails = (ship) => {
+        console.log(ship);
+        
 	}
 
 	useEffect(() => { getShip() }, [])

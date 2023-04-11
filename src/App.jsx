@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import './App.css'
-import Home from './pages/Home'
+import routes from './config/routes'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      <Home />
+      {routes}
     </div>
   )
 }

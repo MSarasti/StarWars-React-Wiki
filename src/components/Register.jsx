@@ -1,10 +1,15 @@
-import * as React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Avatar, FormControl, FormControlLabel, FormLabel, Grid, Paper, Radio, RadioGroup, TextField, Typography, Button } from '@mui/material'
 import { styled } from '@mui/material/styles';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import LoginTwoToneIcon from '@mui/icons-material/LoginTwoTone';
+import {createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../util/firebase';
 
 const Register = () => {
+
+  const[email, setEmail] = useState('')
+  const[password, setPassword] = useState('')
 
   const paperStyle = { padding: '30px 20px', width: 300, margin: "20px auto" }
   const avatarStyle = { backgroundColor: '#EFBC01', color: '#000000' }
@@ -16,6 +21,22 @@ const Register = () => {
       backgroundColor: "#EFCB01",
     },
   }));
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+     // Signed in
+      const user = userCredential.user;
+      // ...
+  })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+    });
+  }
+
 
   return (
     <Grid>
@@ -30,20 +51,10 @@ const Register = () => {
           </Typography>
         </Grid>
         <form>
-          <TextField sx={{ paddingTop: '10px' }} id="name" label="Name" variant="filled" placeholder='Enter your name' type='text' fullWidth required />
-          <FormControl sx={{marginTop: '10px'}}>
-            <FormLabel>Gender</FormLabel>
-            <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group"
-            >
-              <FormControlLabel value="female" control={<Radio />} label="Female" />
-              <FormControlLabel value="male" control={<Radio />} label="Male" />
-              <FormControlLabel value="other" control={<Radio />} label="Other" />
-            </RadioGroup>
-          </FormControl>
-          <TextField sx={{ paddingTop: '10px' }} id="userName" label="Username" variant="filled" placeholder='Enter an username' type='text' fullWidth required />
-          <TextField sx={{ paddingTop: '10px' }} id="password" label="Password" variant="filled" placeholder='Enter a password' type='password' fullWidth required />
+          <TextField sx={{ paddingTop: '10px' }} id="email" label="Email" variant="filled" placeholder='Enter an email' type='text' value={email} onChange={(e) => setEmail(e.target.value)}fullWidth required />
+          <TextField sx={{ paddingTop: '10px' }} id="password" label="Password" variant="filled" placeholder='Enter a password' type='password' value={password} onChange={(e) => setPassword(e.target.value)} fullWidth required />
         </form>
-        <ColorButton variant='contained' endIcon={<LoginTwoToneIcon/>} sx={{width: '50%', marginTop: '25px'}}>Sign Up</ColorButton>
+        <ColorButton variant='contained' endIcon={<LoginTwoToneIcon/>} onClick={handleSignUp} sx={{width: '50%', marginTop: '25px'}}>Sign Up</ColorButton>
       </Paper>
     </Grid>
   )

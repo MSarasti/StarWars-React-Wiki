@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { Avatar, FormControl, FormControlLabel, FormLabel, Grid, Paper, Radio, RadioGroup, TextField, Typography, Button } from '@mui/material'
+import { Grid, Paper, Avatar, TextField, Box, Button, Typography, Link} from '@mui/material'
 import { styled } from '@mui/material/styles';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import LoginTwoToneIcon from '@mui/icons-material/LoginTwoTone';
@@ -54,7 +54,11 @@ const Register = () => {
           <TextField sx={{ paddingTop: '10px' }} id="email" label="Email" variant="filled" placeholder='Enter an email' type='text' value={email} onChange={(e) => setEmail(e.target.value)}fullWidth required />
           <TextField sx={{ paddingTop: '10px' }} id="password" label="Password" variant="filled" placeholder='Enter a password' type='password' value={password} onChange={(e) => setPassword(e.target.value)} fullWidth required />
         </form>
-        <ColorButton variant='contained' endIcon={<LoginTwoToneIcon/>} onClick={handleSignUp} sx={{width: '50%', marginTop: '25px'}}>Sign Up</ColorButton>
+        <ColorButton variant='contained' endIcon={<LoginTwoToneIcon/>} onClick={handleSignUp} sx={{width: '50%', marginTop: '60px'}}>Sign Up</ColorButton>
+        <Typography sx={{marginTop:'10px'}}>
+                Do you have a account?
+                <Link href='/login'> Sign In</Link>
+            </Typography>
       </Paper>
     </Grid>
   )

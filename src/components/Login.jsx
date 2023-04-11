@@ -53,7 +53,7 @@ const Login = () => {
             <ColorButton variant="contained" endIcon={<LoginTwoToneIcon/>} onClick={handleLogin} sx={{ width: '50%', marginTop: '60px' }}>Sign in</ColorButton>
             <Typography sx={{marginTop:'10px'}}>
                 Don't have a account?
-                <Link href='#'> Sign Up</Link>
+                <Link href='/register'> Sign Up</Link>
             </Typography>
             </Box>
         </Paper>

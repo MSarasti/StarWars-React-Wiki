@@ -10,14 +10,14 @@ function Planet() {
 	const renderPlanet = () => {
 		//console.log(planetList)
 		return  planetList.map( (planet)=> (
-			<PlanetComponent planet={planet} key={idRegex.exec(planet.url)} handleDetails={handleDetails}/>
+			<PlanetComponent planet={planet} key={planet.url} handleDetails={handleDetails}/>
 		) )
 	}
   
 	const getPlanet = () => {
-		axios.get("/planet")
+		axios.get("/planets")
 		.then((response) => {
-			setPlanetList(response.data)
+			setPlanetList(response.data.results)
 		})
 	}
 
@@ -35,8 +35,8 @@ function Planet() {
 					<TableRow>
 						<TableCell>ID</TableCell>
 						<TableCell>Name</TableCell>
-						<TableCell>Gender</TableCell>
-						<TableCell>Height</TableCell>
+						<TableCell>Population</TableCell>
+						<TableCell>Gravity</TableCell>
 						<TableCell>Actions</TableCell>
 					</TableRow>
 				</TableHead>

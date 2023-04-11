@@ -10,14 +10,14 @@ function Ship() {
 	const renderShip = () => {
 		//console.log(shipList)
 		return  shipList.map( (ship)=> (
-			<ShipComponent ship={ship} key={idRegex.exec(ship.url)} handleDetails={handleDetails}/>
+			<ShipComponent starship={ship} key={ship.url} handleDetails={handleDetails}/>
 		) )
 	}
   
 	const getShip = () => {
-		axios.get("/ship")
+		axios.get("/starships")
 		.then((response) => {
-			setShipList(response.data)
+			setShipList(response.data.results)
 		})
 	}
 
@@ -35,8 +35,8 @@ function Ship() {
 					<TableRow>
 						<TableCell>ID</TableCell>
 						<TableCell>Name</TableCell>
-						<TableCell>Gender</TableCell>
-						<TableCell>Height</TableCell>
+						<TableCell>Model</TableCell>
+						<TableCell>Class</TableCell>
 						<TableCell>Actions</TableCell>
 					</TableRow>
 				</TableHead>

@@ -15,11 +15,16 @@ function People() {
 	}
   
 	const getPeople = () => {
+		let count = 1
+		let next = "/people/?page="
+		let url = ""
+		
 		axios.get("/people")
 		.then((response) => {
-			console.log(response.data)
+			//console.log(response.data)
 			setPeopleList(response.data.results)
 		})
+
 	}
 
 	const handleDetails = () => {

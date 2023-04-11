@@ -2,8 +2,10 @@ import React from 'react'
 import { TableRow, TableCell, Button } from '@mui/material'
 
 function ShipComponent({starship, handleEdit, handleDetails}) {
-     return (
+	const idRegex = /([\d]+)/g;
+    return (
     <TableRow>
+        <TableCell>{idRegex.exec(starship.url)[0]}</TableCell>
         <TableCell>{starship.name}</TableCell>
         <TableCell>{starship.model}</TableCell>
         <TableCell>{starship.starship_class}</TableCell>

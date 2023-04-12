@@ -6,6 +6,7 @@ import NotFound from '../pages/NotFound'
 import People from '../pages/PeopleView'
 import Planet from '../pages/PlanetView'
 import Ship from '../pages/ShipView'
+import App from '../App'
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,7 @@ const routes =  (
     <Router>
         <Routes>
             <Route path="/" element={<Home/>} />
+            <Route paht="/StarWars-React-Wiki" element={<App />} />
             <Route path="/login" element={<Login/>} />
             <Route path="/register" element={<Register/>} />
             <Route path="/planet" element={<Planet/>} />
